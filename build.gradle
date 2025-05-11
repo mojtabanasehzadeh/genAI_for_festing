@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5' // Or your desired Spring Boot version
+    id 'io.spring.dependency-management' version '1.1.4' // Matches Spring Boot version
+}
+
+group = 'com.moji'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17' // Spring Boot 3.x requires Java 17 or higher
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // OpenAI Client
+    implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation("com.github.tomakehurst:wiremock-standalone:3.0.1")
+}
+
+test {
+    useJUnitPlatform()
+}

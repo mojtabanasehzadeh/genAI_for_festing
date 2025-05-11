@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: genai-testing-demo-test
+
+openai:
+  api-key: test-api-key
+  model: gpt-3.5-turbo
+  temperature: 0.7
+  max-tokens: 500
